@@ -1,8 +1,9 @@
 pipeline {
     agent any
 	tools {
-		maven 'mvn_home'
-	}
+       maven 'mvn_home'
+    }
+
     stages {
         stage('SCM-Checkout') {
             steps {
