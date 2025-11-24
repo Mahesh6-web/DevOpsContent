@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+	tools {
+		maven 'mvn_home'
+	}
+    stages {
+        stage('SCM-Checkout') {
+            steps {
+                git branch: 'main', credentialsId: '607700c2-3548-4a62-9be5-5202aa082352', url: 'https://github.com/Mahesh6-web/DevOpsContent.git'
+            }
+        }
+		stage('Maven-clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        stage('Maven-build') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('Maven-deploy') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
